@@ -7,9 +7,8 @@ import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.HashSet;
+
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JColorChooser;
@@ -17,6 +16,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+
 import online.ClienteTanque;
 import online.ServidorTanque;
 import online.TanqueMP;
@@ -137,7 +137,7 @@ public class Arena extends JComponent implements ActionListener, Runnable {
 		tanque.adicionarBalas(t);
 	}
 
-	public synchronized void start() throws IOException {
+	public synchronized void start() throws Exception {
 		running = true;
 		thread = new Thread(this);
 		thread.start();

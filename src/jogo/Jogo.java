@@ -13,7 +13,7 @@ public class Jogo  implements Runnable  {
 	private static JFrame janela = new JFrame("Taque do Gerson");
 
 	
-	public static void main(String[] args) throws LineUnavailableException, UnsupportedAudioFileException, IOException {
+	public static void main(String[] args) throws Exception {
 		arena.start();	
 		arena.janelaX = new JanelaX(janela, arena);
 		janela.setSize(600, 400);

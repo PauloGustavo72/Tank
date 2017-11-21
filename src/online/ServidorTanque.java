@@ -12,6 +12,7 @@ import java.util.List;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import TesteChat.ChatServer;
 import jogo.Arena;
 import jogo.Packet;
 import jogo.Packet.PacketTypes;
@@ -20,20 +21,23 @@ import jogo.Packet01Desconectar;
 import jogo.Packet02Move;
 import jogo.Packet03Atirar;
 import jogo.Tiro;
-public class ServidorTanque extends Thread{
-private DatagramSocket socket;
-private Arena arena;
-private List<Tiro> tirosNaTela = new ArrayList<Tiro>();
-private List<TanqueMP> tanquesConectados = Collections.synchronizedList(new ArrayList<TanqueMP>());
-
-public ServidorTanque(Arena arena) throws UnknownHostException{
-	this.arena = arena;
-	try{
-		this.socket = new DatagramSocket(1331); // especificando uma porta qualquer acima de 1024, pois abaixo provavelmente ja estao sendo usadas por outras apps.
-	}
-	catch(SocketException e){
-		e.printStackTrace();
-	}
+		public class ServidorTanque extends Thread{
+		private DatagramSocket socket;
+		private Arena arena;
+		private List<Tiro> tirosNaTela = new ArrayList<Tiro>();
+		private List<TanqueMP> tanquesConectados = Collections.synchronizedList(new ArrayList<TanqueMP>());
+			private ChatServer ss;
+			public ServidorTanque(Arena arena) throws Exception{
+				this.arena = arena;
+				try{
+					this.socket = new DatagramSocket(1331); // especificando uma porta qualquer acima de 1024, pois abaixo provavelmente ja estao sendo usadas por outras apps.
+					// estancia servidor
+					ChatServer cs = new ChatServer();
+					cs.seVira();
+				}
+				catch(SocketException e){
+					e.printStackTrace();
+				}
 	
 }
 public void run(){

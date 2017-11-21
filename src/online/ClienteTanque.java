@@ -11,6 +11,7 @@ import java.util.List;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import TesteChat.ChatClient;
 import jogo.Arena;
 import jogo.Packet;
 import jogo.Packet.PacketTypes;
@@ -25,11 +26,13 @@ public class ClienteTanque extends Thread{
 	private Arena arena;
 	private List<Tiro> tirosNaTela = new ArrayList<Tiro>();
 	
-	public ClienteTanque(Arena arena, String enderecoIP) throws IOException{
+	public ClienteTanque(Arena arena, String enderecoIP) throws Exception{
 		this.arena = arena;
 		
 		try {
 			this.socket = new DatagramSocket();
+			ChatClient cc = new ChatClient();
+			cc.seVira();
 		} catch (SocketException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
